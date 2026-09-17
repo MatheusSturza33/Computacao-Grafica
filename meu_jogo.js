@@ -1,0 +1,82 @@
+class MeuJogo extends JS_CG_2D_API {
+
+acaoAoIniciar() {
+    this.pontos = 0;
+    this.jogador = new Sprite(32, 32);
+    this.jogador.setAnimacao(this.frames);
+    this.jogador.setVelocidade(2, 0);
+    this.cima = false;
+    this.baixo = false;
+    this.esquerda = false;
+    this.direita = false;
+}
+
+atualizar() {
+    this.jogador.atualizar();
+
+    if(this.direita){
+        this.jogador.setVelocidade(1,0);
+        this.jogador.setAnimacao(this.direita);
+    }
+
+    if(this.cima){
+        this.jogador.setVelocidade(0,1);
+        this.jogador.setAnimacao(this.cima);
+    }
+
+    if(this.esquerda){
+        this.jogador.setVelocidade(-1,0);
+        this.jogador.setAnimacao(this.esquerda
+        );
+    }
+
+    if(this.baixo){
+        this.jogador.setVelocidade(0,-1);
+        this.jogador.setAnimacao(this.baixo);
+    }
+}
+
+teclaPressionada(e){
+    if(e.key == "ArrowUp"){
+        this.cima = true;
+    }
+
+    if(e.key == "ArrowDown"){
+        this.baixo = true;
+    }
+
+     if(e.key == "ArrowLeft"){
+        this.esquerda = true;
+    }
+
+     if(e.key == "ArrowRight"){
+        this.direita = true;
+    }
+}
+
+teclaLiberada(e){
+    if(e.key == "ArrowUp"){
+        this.cima = false;
+    }
+
+    if(e.key == "ArrowDown"){
+        this.baixo = false;
+    }
+
+     if(e.key == "ArrowLeft"){
+        this.esquerda = false;
+    }
+
+     if(e.key == "ArrowRight"){
+        this.direita = false;
+    }
+}
+
+desenhar() {
+    this.limparTela("lightblue");
+    this.desenharSprite(this.jogador);
+}
+}
+window.addEventListener("load", () => {
+    new MeuJogo("Meu Primeiro Jogo", "meuCanvas", 800, 600);
+});
