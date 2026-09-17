@@ -51,18 +51,22 @@ teclaPressionada(e){
 teclaLiberada(e){
     if(e.key == "ArrowUp"){
         this.cima = false;
+        this.jogador.setVelocidade(0,0);
     }
 
     if(e.key == "ArrowDown"){
         this.baixo = false;
+        this.jogador.setVelocidade(0,0);
     }
 
      if(e.key == "ArrowLeft"){
         this.esquerda = false;
+        this.jogador.setVelocidade(0,0);
     }
 
      if(e.key == "ArrowRight"){
         this.direita = false;
+        this.jogador.setVelocidade(0,0);
     }
 }
 
