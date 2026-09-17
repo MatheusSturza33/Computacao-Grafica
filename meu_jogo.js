@@ -1,10 +1,10 @@
 class MeuJogo extends JS_CG_2D_API {
 
 acaoAoIniciar() {
-    this.pontos = 0;
-    this.jogador = new Sprite(32, 32);
+    this.frames = this.carregarFrames("pikachu", 4);
+    this.jogador = new Sprite(16, 16);
     this.jogador.setAnimacao(this.frames);
-    this.jogador.setVelocidade(2, 0);
+    this.jogador.setVelocidade(0, 0);
     this.cima = false;
     this.baixo = false;
     this.esquerda = false;
@@ -12,28 +12,22 @@ acaoAoIniciar() {
 }
 
 atualizar() {
-    this.jogador.atualizar();
-
     if(this.direita){
         this.jogador.setVelocidade(1,0);
-        this.jogador.setAnimacao(this.direita);
     }
 
     if(this.cima){
-        this.jogador.setVelocidade(0,1);
-        this.jogador.setAnimacao(this.cima);
+        this.jogador.setVelocidade(0,-1);
     }
 
     if(this.esquerda){
         this.jogador.setVelocidade(-1,0);
-        this.jogador.setAnimacao(this.esquerda
-        );
     }
 
     if(this.baixo){
-        this.jogador.setVelocidade(0,-1);
-        this.jogador.setAnimacao(this.baixo);
+        this.jogador.setVelocidade(0,1);
     }
+     this.jogador.atualizar();
 }
 
 teclaPressionada(e){
